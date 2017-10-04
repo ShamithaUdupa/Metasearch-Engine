@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web Search Engine</title>
+</head>
+<body>
+	<div id="search">
+		<form action="result" method="get">
+			<input type="text" name="searchbox">
+			<input type="submit" name="submit" value="Search">
+		</form>
+	</div>
+	<div>
+	<h4>RESULTS</h4>
+	{% for c in context %}
+	<div>
+		<p>{{c.title}}</p>
+		<a href="{{c.link}}">{{c.link}}</a>
+		<br>
+	<div>
+	{% endfor %}
+	</div>
+</body>
+</html>
