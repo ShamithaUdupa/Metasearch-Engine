@@ -1,26 +1,37 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Web Search Engine</title>
-	<style type="text/css">
-		#title{
-
-		}
-		#search{
-			
-		}
-	</style>
+  <title>Web Search Engine</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 <style>
+  .jumbotron{
+  height: 100vh}
+  }
+  </style>  
 </head>
 <body>
-	<div>
-		<p id="title">METAFUSION</p>
-	</div>
-	<br>
-	<div id="search">
-		<form action="result" method="get">
-			<input type="text" name="searchbox">
-			<input type="submit" name="submit" value="Search">
-		</form>
-	</div>
+
+<div class="jumbotron jumbotron-fulid text-center">	
+	<h2> Meta Fusion Search Engine <h2></br>
+	<form class="form-inline" action="result" method="get">
+    <div class="input-group">
+    	<input type="search" class="form-control" size="50" placeholder="Enter the text" required name="searchbox">
+        <div class="input-group-btn">             
+             <button type="button" class="btn btn-success" name="submit" value="search">
+             <span class="glyphicon glyphicon-search"></span>
+        </button>
+   		</div>
+   		</div>
+
+	</form>
+	</br>
+	<img src="https://www.irishtimes.com/polopoly_fs/1.2337263.1441179687!/image/image.jpg" class="img-rounded"  width="150" height="125">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQubQYKhOU_71eTlLpyum0Oz2S3DwYZAK5w208HnKgR8rLYpo_4" class="img-rounded"  width="150" height="125">
+	
+</div>
 </body>
 </html>
