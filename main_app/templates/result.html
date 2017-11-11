@@ -2,23 +2,83 @@
 <html>
 <head>
 	<title>Web Search Engine</title>
+	
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.jumbotron{
+padding: 20px 20px 20px 20px;
+}
+</style>
 </head>
 <body>
-	<div id="search">
-		<form action="result" method="get">
-			<input type="text" name="searchbox">
-			<input type="submit" name="submit" value="Search">
-		</form>
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+  		  <ul class="nav navbar-nav">
+      		<li><a href="index.html"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+      		<li class="active"><a href="#">Results</a></li>
+		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown menu <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#"><span class="glyphicon glyphicon-user"> Login </span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-off"> Logout </a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> Help </a></li>
+        </ul>
+      </li>
+    		  </ul>
+  		</div>
+	</nav>
+
+
+<!-- First container -->	
+<div class="jumbotron">
+		<form class="form-inline" action="result" method="get">
+    			<div class="input-group">
+    				<input type="search" class="form-control" size="100" placeholder="Enter the text" required name="searchbox">
+        		<div class="input-group-btn">             
+             		<button type="button" class="btn btn-success" name="submit" value="search">
+             		<span class="glyphicon glyphicon-search"></span>
+        </button>
+   		</div>
+   		</div>	
 	</div>
-	<div>
-	<h4>RESULTS</h4>
+
+<!--Second Conatiner-->
+<div class="jumbotron" style="left-padding:10px">
+
 	{% for c in context %}
 	<div>
-		<p>{{c.title}}</p>
+		
+		<p><strong><span class="glyphicon glyphicon-triangle-right"></span> {{c.title}}</strong></p>
 		<a href="{{c.link}}">{{c.link}}</a>
-		<br>
+		<hr style="background-color:black;height:2px;">
 	<div>
 	{% endfor %}
 	</div>
+	
+	{% if context.has_other_pages %}
+  		<ul class="pagination" >
+    		{% if context.has_previous %}
+      			<li><a href="?searchbox={{ request.GET.searchbox }}&page={{ context.previous_page_number }}">&laquo;</a></li>
+    		{% else %}
+      			<li class="disabled"><span>&laquo;</span></li>
+    		{% endif %}
+    		{% for i in context.paginator.page_range %}
+      			{% if context.number == i %}
+        			<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      			{% else %}
+       	 			<li><a href="?searchbox={{ request.GET.searchbox }}&page={{ i }}">{{ i }}</a></li>
+      			{% endif %}
+   		{% endfor %}
+    		{% if context.has_next %}
+      			<li><a href="page=?searchbox={{ request.GET.searchbox }}&{{ context.next_page_number }}">&raquo;</a></li>
+    		{% else %}
+      			<li class="disabled"><span>&raquo;</span></li>
+    		{% endif %}
+  		</ul>
+	{% endif %}
+</div>
 </body>
 </html>
