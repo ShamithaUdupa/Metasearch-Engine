@@ -16,9 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from main_app import views
+from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',views.index),
+    url(r'&page=',views.pager),
     url(r'^result/',views.result),
+    url(r'^about/',TemplateView.as_view(template_name='about.html'), name='about'),
 ]
