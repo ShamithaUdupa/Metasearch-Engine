@@ -9,28 +9,61 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-.jumbotron{
-padding: 20px 20px 20px 20px;
+
+.form-control{
+height: 50px;
+width: 100px;
+}
+
+button{
+height:50px;
+width:50px;
+}
+
+body, html {
+    height: 125%;
+    margin: 0;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("https://bootstrapcreative.com/wp-bc/wp-content/uploads/2017/03/learning-story.png");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.jumbotron {
+   background: rgb(200, 54, 54); 
+   background: rgba(200, 54, 54, 0); 
+   padding: 20px 20px 20px 20px;
 }
 </style>
 </head>
 <body>
+
+<div class="bg">
 	<nav class="navbar navbar-inverse">
   		<div class="container-fluid">
   		  <ul class="nav navbar-nav">
-      		<li><a href="index.html"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+		<li class="home"><a href="http://127.0.0.1:8000/"> Home </a></li>
       		<li class="active"><a href="#">Results</a></li>
 		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown menu <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#"><span class="glyphicon glyphicon-user"> Login </span></a></li>
           <li><a href="#"><span class="glyphicon glyphicon-off"> Logout </a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> Help </a></li>
+          <li><a href="{% url 'about' %}"><span class="glyphicon glyphicon-info-sign"></span> Info </a></li>
         </ul>
       </li>
     		  </ul>
   		</div>
 	</nav>
-
 
 <!-- First container -->	
 <div class="jumbotron">
@@ -51,15 +84,15 @@ padding: 20px 20px 20px 20px;
 	{% for c in context %}
 	<div>
 		
-		<p><strong><span class="glyphicon glyphicon-triangle-right"></span> {{c.title}}</strong></p>
-		<a href="{{c.link}}">{{c.link}}</a>
+		<p style="color:white;"><strong><span class="glyphicon glyphicon-triangle-right"  ></span> {{c.title}}</strong></p>
+		<a href="{{c.link}}" style="color:#800000;"><strong>{{c.link}}</strong></a>
 		<hr style="background-color:black;height:2px;">
 	<div>
 	{% endfor %}
 	</div>
 	
 	{% if context.has_other_pages %}
-  		<ul class="pagination" >
+  		<ul class="pagination">
     		{% if context.has_previous %}
       			<li><a href="?searchbox={{ request.GET.searchbox }}&page={{ context.previous_page_number }}">&laquo;</a></li>
     		{% else %}
@@ -67,9 +100,9 @@ padding: 20px 20px 20px 20px;
     		{% endif %}
     		{% for i in context.paginator.page_range %}
       			{% if context.number == i %}
-        			<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+        			<li class="active"><span>{{ i }} <span class="sr-only" style="color:#800000;">(current)</span></span></li>
       			{% else %}
-       	 			<li><a href="?searchbox={{ request.GET.searchbox }}&page={{ i }}">{{ i }}</a></li>
+       	 			<li><a href="?searchbox={{ request.GET.searchbox }}&page={{ i }}" style="color:#800000;">{{ i }}</a></li>
       			{% endif %}
    		{% endfor %}
     		{% if context.has_next %}
@@ -79,6 +112,7 @@ padding: 20px 20px 20px 20px;
     		{% endif %}
   		</ul>
 	{% endif %}
+</div>
 </div>
 </body>
 </html>
