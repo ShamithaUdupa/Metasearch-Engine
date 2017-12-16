@@ -1,26 +1,72 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Web Search Engine</title>
-	<style type="text/css">
-		#title{
+  <title>Web Search Engine</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+body, html {
+    height: 100%;
+    margin: 0;
+}
 
-		}
-		#search{
-			
-		}
-	</style>
+.bg {
+    /* The image used */
+    background-image: url("https://bootstrapcreative.com/wp-bc/wp-content/uploads/2017/03/learning-story.png");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.jumbotron {
+   background: rgb(200, 54, 54); 
+   background: rgba(200, 54, 54, 0); 
+   padding-top: 200px;
+}
+
+.vertical-center {
+  min-height: 100%;  
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+}
+
+.form-control{
+height: 50px;
+width: 100px;
+}
+
+button{
+height:50px;
+width:50px;
+}
+
+
+</style>
 </head>
 <body>
-	<div>
-		<p id="title">METAFUSION</p>
-	</div>
-	<br>
-	<div id="search">
-		<form action="result" method="get">
-			<input type="text" name="searchbox">
-			<input type="submit" name="submit" value="Search">
+<div class="bg">
+	<div class="jumbotron jumbotron-fluid text-center">
+		<h2> Search Engine </h2><br>
+		<form class="form-inline" action="result" method="get">
+			<div class="input-group">
+				<input type="text" name="searchbox" class="form-control" size="50" placeholder="Enter the search query">
+				<div class="input-group-btn">
+					<button type="submit" class="btn btn-success" name="submit" value="search">
+					<span class="glyphicon glyphicon-search"></span>
+				</div>
+			</div>
 		</form>
+	</div>
 	</div>
 </body>
 </html>

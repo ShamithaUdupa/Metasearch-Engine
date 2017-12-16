@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">  
+    <title>About The Project </title>
+    <style>
+body {
+  background-color: #faf2e4;
+  margin: 0 15%;
+  font-family: sans-serif;
+  }
+
+h1 {
+  text-align: center;
+  font-family: serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  border-bottom: 1px solid #57b1dc;
+  margin-top: 30px;
+}
+
+h3 {
+  text-align: center;
+  font-family: serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  border-bottom: 1px solid #57b1dc;
+  color: #d1633c;
+  font-size: 1em;
+ }
+
+h2{
+ color: #d1633c;
+ font-size: 1em;
+ 
+}
+
+</style>
+  </head>
+  <body>
+ <h1>MetaFusion: An Efficient MetaSearch Engine using Genetic Algorithm </h1>
+ <h3>
+<center>
+<ul style="list-style-type:circle">
+<li><a href="#abstract">Abstract</a></li><br/>
+<li><a href="#introduction">Introduction</a></li><br/>
+<li><a href="#Methodology">Methodology</a></li><br/>
+<li><a href="#Implementation">Implementation</a></li><br/>
+</ul>
+</center>
+</h3>
+<br/><br/><br/>
+<div id=abstract>
+In the recent years, the internet has become one of the most important resource of information. Whenever a user poses a query to the Meta-search engine then a large number of documents are retrieved from underlying search engines, but providing the rank list of relevant documents with respect to the user query is one of the most challenging tasks for any Meta- search engine. A meta-search engine is a kind of search tool that dynamically dispatches user query to the underlying search engines, hence providing parallel access to multiple search engines and then aggregate the results to present single consolidated result list to user. In this project, we propose an algorithm for merging the results of retrieved documents from underlying search engines. The proposed algorithm makes use of genetic algorithm to find the single rank list of retrieved documents for the user query. The proposed algorithm combines fuzzy AHP with genetic algorithm to get more comprehensive and optimized results. The results show that the retrieved documents of rank list are more comprehensive and relevant. The results also motivate to explore and optimize the information retrieval in Meta-search engines.
+</div>
+<br/><br/><br/>
+
+<div id=introduction>
+ The World Wide Web (WWW) is an information space where documents and other web resources are identified by Uniform Resource Locators(URLs), interlinked by hypertext links, and can be accessed via the Internet.The World Wide Web has been central to the development of the Information Age and is the primary tool billions of people use to interact on the Internet. Web pages are primarily text documents formatted and annotated with Hypertext Mark-up Language (HTML). In addition to formatted text, web pages may contain images, video, audio, and software components that are rendered in the user's web browser as coherent pages of multimedia content.
+
+ A metasearch engine is a search tool that uses another search engine's data to produce their own results from the Internet. Metasearch   engines take input from a user and simultaneously send out queries to third party search engines for results. Sufficient data is gathered, formatted by their ranks and presented to the users.This project presents a new meta-search engine, named as MetaFusion, which is capable of handling dynamic web environment.Google and Bing Search engine results have been considered in this project.
+<center><img src="http://thewindowsclub.thewindowsclubco.netdna-cdn.com/wp-content/uploads/2016/02/What-is-meta-search-engine.png"><br/>Figure 1 : Meta Search Engine </center>
+</div>
+<br/><br/><br/>
+
+<div id=Methodology>
+Meta-Fusion search engine is used for handling dynamic web environment. It uses Fuzzy Analytical Hierarchy Process (FAHP) along with Genetic algorithm to retrieve comprehensive results.  Genetic Algorithm (GA) is a self-adapting global optimization algorithm which imitates biological evolution process i.e. crossover, mutation, selection. When a user inputs a query,hundered results from bing and google search engine are collected . A list of results from google and bing are returned by the meta search engine in response to the user query posed by a user.The most suited documents with respect to the user query is done with the help of genetic algorithm .Genetic Algorithm is a self adapting global optimization parallel search algorithm which imitates biological evolution process i.e. crossover, mutation, selection .Genetic algorithm has been used for  generation of a single merged list of documents on the basis of the fitness of documents which is based on the weighted score of a document.Genetic Algorithm(GA) is used for result merging which uses average weight of document in underlying search engine as fitness function. The documents are ranked in decreasing order of their fitness value i.e. most relevant document have higher fitness value and is present at top position in rank list.The results are paginated i.e. 10 results are displayed per page.
+<center><img src="https://www.researchgate.net/profile/John_Geraghty2/publication/236179246/figure/fig1/AS:299498850013187@1448417498772/Fig-1-Genetic-algorithm-procedure-for-TSP.png"><br/>Figure 2 : Working Of Genetic Algorithm</center>
+</div>
+<br/><br/><br/>
+
+<div id=Implementation>
+The Front End Technologies used are : <em>Html,Css,Bootstrap</em><br/>
+The Back End Technologies used are :<em> Django Framework</em><br/><br/>
+</div>
+<br/><br/>
+
+<br/><br/>
+
+</body>
+</html>
+
+

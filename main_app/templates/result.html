@@ -2,23 +2,135 @@
 <html>
 <head>
 	<title>Web Search Engine</title>
+	
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		$(".res").on("click",function(){
+  			var r=confirm("Create a bookmark?");
+  			if(r==true)
+  			{
+	  			text=$(this).prev().prev().text();
+	  			url=$(this).prev().text();
+	  			window.open("/bookmarks?text="+text+"&url="+url+"&action=add");
+	  		}
+  		});
+  	});
+  </script>
+<style>
+
+.form-control{
+height: 50px;
+width: 100px;
+}
+
+button{
+height:50px;
+width:50px;
+}
+
+body, html {
+    height: 110%;
+    margin: 0;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("https://bootstrapcreative.com/wp-bc/wp-content/uploads/2017/03/learning-story.png");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.jumbotron {
+   background: rgb(200, 54, 54); 
+   background: rgba(200, 54, 54, 0); 
+   padding: 20px 20px 20px 20px;
+}
+
+.dropdown{
+align: right;
+}
+</style>
 </head>
 <body>
-	<div id="search">
-		<form action="result" method="get">
-			<input type="text" name="searchbox">
-			<input type="submit" name="submit" value="Search">
-		</form>
+<div class="img-responsive">
+<div class="bg">
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+  		  <ul class="nav navbar-nav">
+  		  	<li><a href="/"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+      		<li class="active"><a href="#">Results</a></li>
+		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/about"><span class="glyphicon glyphicon-info-sign"></span> About </a></li>
+          <li><a href="/bookmarks"><span class="glyphicon glyphicon-pencil"></span>Bookmarks</a></li>
+        </ul>
+      </li>
+    		  </ul>
+  		</div>
+	</nav>
+
+
+<!-- First container -->	
+<div class="jumbotron">
+		<form class="form-inline" action="result" method="get">
+    			<div class="input-group">
+    				<input type="search" class="form-control" size="100" placeholder="Enter the text" required name="searchbox">
+        		<div class="input-group-btn">             
+             		<button type="submit" class="btn btn-success" name="submit"><span class="glyphicon glyphicon-search"></span>
+        </button>
+   		</div>
+   		</div>
+   		</form>	
 	</div>
-	<div>
-	<h4>RESULTS</h4>
+
+<!--Second Conatiner-->
+<div class="jumbotron" style="left-padding:10px">
+
 	{% for c in context %}
 	<div>
-		<p>{{c.title}}</p>
-		<a href="{{c.link}}">{{c.link}}</a>
-		<br>
-	<div>
-	{% endfor %}
+		
+		<p><strong style="color:white;"><span class="glyphicon glyphicon-triangle-right"></span> {{c.title}}</strong></p>
+		<a href="{{c.link}}" style="color:orange; font-size:18px;">{{c.link}}</a>
+		<span class="res" style="float:right;color:white;"><span class="glyphicon glyphicon-star"></span></span>
+		<hr style="background-color:black;height:2px;">
 	</div>
+	{% endfor %}
+	
+	{% if context.has_other_pages %}
+  		<ul class="pagination" >
+    		{% if context.has_previous %}
+      			<li><a href="?searchbox={{ request.GET.searchbox }}&page={{ context.previous_page_number }}">&laquo;</a></li>
+    		{% else %}
+      			<li class="disabled"><span>&laquo;</span></li>
+    		{% endif %}
+    		{% for i in context.paginator.page_range %}
+      			{% if context.number == i %}
+        			<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      			{% else %}
+       	 			<li><a href="?searchbox={{ request.GET.searchbox }}&page={{ i }}">{{ i }}</a></li>
+      			{% endif %}
+   		{% endfor %}
+    		{% if context.has_next %}
+      			<li><a href="page=?searchbox={{ request.GET.searchbox }}&{{ context.next_page_number }}">&raquo;</a></li>
+    		{% else %}
+      			<li class="disabled"><span>&raquo;</span></li>
+    		{% endif %}
+  		</ul>
+	{% endif %}
+</div>
+</div>
+</div>
 </body>
 </html>

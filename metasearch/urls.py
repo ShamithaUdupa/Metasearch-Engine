@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from main_app import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',views.index),
+    url(r'^$',views.index,name='home'),
     url(r'^result/',views.result),
+	url(r'^bookmarks',views.bookmarks),
+	url(r'^about',views.about),
 ]

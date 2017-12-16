@@ -1,0 +1,29 @@
+Metasearch Engine
+
+1. User submits a query to the metasearch engine interface.
+2. The query submitted is processed to remove irrelevant words, stopwords, etc.
+3. The refined query is sent to the search engines - Google, Bing
+4. The underlying search engines accesses the network resources and then return back their respective results to Meta Search Engine.
+5. Meta Search Engine aggregates the returned results into single consolidated rank list by using genetic algorithm.
+
+Genetic Algorithm : 
+
+Initialze Population : n*m
+	n is number of search engines
+	m is the maximum number of documents returned 
+
+To calculate fitness function
+1. Assign weights to documents ( top most document in each search engine’s result list gets highest value)
+	doc score of a search engine, i = total no of documents returned by the search engine, i - position + 1
+2. Individual search engines are also assigned weights 
+	w of i = (i/n)^alpha - (i-1/n)^alpha , alpha is a random no (0,1) n is the no of search engines
+3. Calculate OWA(Ordered Weighted Average) operator of document of i = (w of i * doc score of document j)
+4. Calculate Average(OWA) of i = sum (OWA of all documents of i)/Total no of documents returned by search engine, i
+5. Fitness(i)= (Avg(OWA)-CP/maxfit-CP) ; if (beta * CP)>fitness(i) then fitness(i)=maxfit
+	maxfit=max of Avg(OWA);beta is a random no (0,1);CP - cut point=0.5*maxfit
+
+Apply genetic operators : mutation, crossover, selection
+
+The documents are ranked in decreasing order of their fitness value i.e. most relevant document have higher fitness value and is present at top position in rank list.
+
+Finally the duplicates are removed and result is displayed to user.

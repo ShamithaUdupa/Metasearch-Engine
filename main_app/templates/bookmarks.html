@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bookmarks</title>
+	
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script scr="text/javascript">
+  	$(document).ready(function(){
+  		$(".del").on("click",function(){
+  			text=$(this).parent().children("p").text();
+  			url=$(this).parent().children("a").text();
+  			window.open("/bookmarks?text="+text+"&url="+url+"&action=remove");
+  			//$(this).parent().remove();
+  			window.close();
+  		});
+  	});
+  </script>
+<style>
+.bg {
+    /* The image used */
+    background-image: url("https://bootstrapcreative.com/wp-bc/wp-content/uploads/2017/03/learning-story.png");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.jumbotron {
+   background: rgb(200, 54, 54); 
+   background: rgba(200, 54, 54, 0); 
+   padding: 20px 20px 20px 20px;
+}
+</style>
+</head>
+	<body>
+	<div class="img-responsive">
+	<div class="bg">
+		<p style="color:white;align:center;font-size:25px;">Bookmarks</p>
+		<div class="jumbotron" style="left-padding:10px">
+		{% for c in context %}
+		<div>
+			<p><strong style="color:white;">{{c.text}}</strong></p>
+			<a style="color:orange;font-size:20px;" href="{{c.link}}">{{c.url}}</a>
+			<span class="del" style="float:right;color:red;"><span class="glyphicon glyphicon-remove"></span></span>
+			<hr style="background-color:black;">
+		</div>
+		{% endfor %}
+		</div>
+		</div>
+		</div>
+	</body>
+</html>
