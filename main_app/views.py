@@ -1,7 +1,11 @@
 from django.shortcuts import render
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.shortcuts import render_to_response
 =======
+=======
+from django.shortcuts import render_to_response
+>>>>>>> 8c3249f214d3a44ab5bfc9381115030dbd9222e0
 from multiprocessing import Pool
 >>>>>>> c2dcf81e775f4092caa6c6f22eb598384f545e41
 import urllib2
@@ -12,11 +16,18 @@ import numpy as np
 import math
 import random 
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from models import Store
 =======
 from collections import OrderedDict
 >>>>>>> c2dcf81e775f4092caa6c6f22eb598384f545e41
+=======
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from models import Store
+from collections import OrderedDict
+
+>>>>>>> 8c3249f214d3a44ab5bfc9381115030dbd9222e0
 opener = urllib2.build_opener()
 opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 obj=[]
@@ -161,8 +172,13 @@ class scrape:
 		self.link=link
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 def fitness1(chromosomes):
 =======
+=======
+def fitness1(chromosomes):
+
+>>>>>>> 8c3249f214d3a44ab5bfc9381115030dbd9222e0
 def fitness(chromosomes):
 >>>>>>> c2dcf81e775f4092caa6c6f22eb598384f545e41
 	fit=[]
@@ -176,6 +192,9 @@ def fitness(chromosomes):
 	return fit
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8c3249f214d3a44ab5bfc9381115030dbd9222e0
 def result(request):
 	if request.method == 'GET':
 		searchstring=request.GET.get('searchbox')
@@ -249,7 +268,11 @@ def result(request):
 	else:
 		return render(request,'index.html')
 
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> 8c3249f214d3a44ab5bfc9381115030dbd9222e0
 def merge_dict(dict_g,dict_b):
 	merged = []
 	for u in dict_b.items():
@@ -323,6 +346,9 @@ def result(request):
 		return render(request,'result.html',{'context':obj})
 	else:
 		return render(request,'index.html')
+<<<<<<< HEAD
 
 		
 >>>>>>> c2dcf81e775f4092caa6c6f22eb598384f545e41
+=======
+>>>>>>> 8c3249f214d3a44ab5bfc9381115030dbd9222e0
